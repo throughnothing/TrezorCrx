@@ -21,6 +21,7 @@
     "protobufjs": "^3.8.2"
   },
   "devDependencies": {
-    "json-loader": "^0.5.1"
+    "json-loader": "^0.5.1",
+    "uglifyjs": "^2.3.6"
   }
 }

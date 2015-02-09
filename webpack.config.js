@@ -21,5 +21,7 @@ module.exports = {
         // make sure that the files in the generated bundle are included in the
         // same order between builds
         new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.UglifyJsPlugin()
+
     ]
 };
