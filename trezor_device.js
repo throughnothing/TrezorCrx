@@ -92,7 +92,7 @@ TrezorDevice.prototype.sendFeatureReport = function(value) {
   });
 }
 
-TrezorDevice.prototype._receive = function() {
+TrezorDevice.prototype._raw_receive = function() {
   var self = this;
   return new Promise(function(resolve, reject) {
     chrome.hid.receive(self.connectionId, function(reportId, data) {
@@ -112,7 +112,7 @@ TrezorDevice.prototype._receiveMoreOfMessageBody = function(messageBuffer, messa
     if (messageBuffer.offset >= messageSize) {
       resolve(messageBuffer);
     } else {
-      self._receive().then(function(report) {
+      self._raw_receive().then(function(report) {
         if (report == null || report.data == null) {
           reject("received no data from device");
         } else {
@@ -145,10 +145,10 @@ TrezorDevice.prototype.parseHeadersAndCreateByteBuffer = function(first_msg) {
   return [messageType, messageLength, messageBuffer];
 }
 
-TrezorDevice.prototype.receiveMessage = function() {
+TrezorDevice.prototype.receive = function() {
   var self = this;
   return new Promise(function(resolve, reject) {
-    self._receive().then(function(report) {
+    self._raw_receive().then(function(report) {
       var headers = self.parseHeadersAndCreateByteBuffer(report.data);
       if (headers == null) {
         reject("Failed to parse headers.");
@@ -181,14 +181,13 @@ TrezorDevice.prototype.send = function(msg_name, data) {
   var self = this;
   return new Promise(function(resolve, reject) {
     var data = self._padByteArray(arrayBuffer, 63);
-    chrome.hid.send(self.connectionId, self.reportId,
-                    data.buffer, function() {
-                      if (chrome.runtime.lastError) {
-                        reject(chrome.runtime.lastError.message);
-                      } else {
-                        resolve(self.receiveMessage());
-                      }
-                    });
+    chrome.hid.send(self.connectionId, self.reportId, data.buffer, function() {
+      if (chrome.runtime.lastError) {
+        reject(chrome.runtime.lastError.message);
+      } else {
+        resolve(self.receive());
+      }
+    });
   });
 
 }

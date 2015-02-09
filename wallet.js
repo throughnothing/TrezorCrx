@@ -1,7 +1,8 @@
 var Wallet = function() {
   this.trezor = new TrezorDevice();
   this.pubkey = null;
-  this.xpub = null;
+  this.hdnode = null;
+  this.lastUsedDerivation = -1;
 }
 
 Wallet.prototype.init = function() {
@@ -12,10 +13,8 @@ Wallet.prototype.init = function() {
   }).then(function(message) {
     return new Promise(function(resolve, reject) {
       var getAddress = function(message) {
-          var pubkey = message.decode();
-          var xpub = self.processPubkey(pubkey);
-          self.pubkey = pubkey;
-          self.xpub = xpub;
+          self.pubkey = message.decode();
+          self.hdnode = bitcoin.HDNode.fromBase58(self.pubkey.xpub);
           return resolve(message);
       };
       if(message.type == TrezorMessages.MessageType.MessageType_PassphraseRequest) {
@@ -32,28 +31,15 @@ Wallet.prototype.init = function() {
   });
 }
 
-Wallet.prototype.processPubkey = function(pubkey) {
-  if (pubkey.xpub != null) {
-    // As of August 10 firmwares and onward
-    return pubkey.xpub;
-  }
-  // Otherwise we have to do a lot of work.
-  var node = pubkey.node;
-  var buf = new Buffer.Buffer(78 - 33 - 32);
-  buf.writeUInt32BE(0x0488B21E, 0);
-  buf.writeUInt8(node.depth, 4);
-  buf.writeUInt32BE(node.fingerprint, 5);
-  buf.writeUInt32BE(node.child_num, 9);
-  buf = Buffer.Buffer.concat(
-    [buf,
-     new Buffer.Buffer(new Uint8Array(node.chain_code.toBuffer())),
-     new Buffer.Buffer(new Uint8Array(node.public_key.toBuffer()))],
-    78);
-  hdnode = Bitcoin.HDNode.fromBuffer(buf);
-  return hdnode.toBase58();
+Wallet.prototype.getNextNode = function() {
+  return this.hdnode.derive(0).derive(++this.lastUsedDerivation);
+}
+Wallet.prototype.getPreviousNode = function() {
+  if(this.lastUsedDerivation == 0) { return null };
+  return this.hdnode.derive(0).derive(--this.lastUsedDerivation);
 }
 
 Wallet.prototype.close = function() { self.trezor.disconnect(); }
 Wallet.prototype.getLabel = function() { return this.trezor.features.label; }
 Wallet.prototype.getDeviceId = function() { return this.trezor.features.device_id; }
-Wallet.prototype.getXpub = function() { return this.xpub; }
+Wallet.prototype.getXpub = function() { return this.hdnode.toBase58(); }
