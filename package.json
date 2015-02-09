@@ -19,5 +19,8 @@
   "dependencies": {
     "bitcoinjs-lib": "^1.4.3",
     "protobufjs": "^3.8.2"
+  },
+  "devDependencies": {
+    "json-loader": "^0.5.1"
   }
 }

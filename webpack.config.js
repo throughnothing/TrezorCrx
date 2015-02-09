@@ -8,11 +8,12 @@ module.exports = {
         filename: 'app.js'
     },
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['', '.js', '.jsx', '.json']
     },
     module: {
         loaders: [
             //{ test: /\.jsx?$/, loader: 'jsx-loader?harmony' },
+            { test: /\.json$/, loader: 'json-loader' },
         ]
     },
 
