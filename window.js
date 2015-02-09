@@ -161,7 +161,7 @@ function receiveMessage() {
         receiveMoreOfMessageBody(headers[2], headers[1])
           .then(function(byteBuffer) {
             byteBuffer.reset();
-            resolve(byteBuffer.toArrayBuffer());
+            resolve({type: headers[0], data: byteBuffer.toArrayBuffer()});
           });
       }
     });
@@ -214,9 +214,11 @@ clearFields();
     }).then(function() {
       return receiveMessage();
     }).then(function(message) {
-      var features = _root.Features.decode(message);
+      var features = _root.Features.decode(message.data);
+      console.log("Features: ", features);
       document.querySelector("#label").innerHTML = features.label;
       document.querySelector("#device_id").value = features.device_id;
+      console.log('send GetAddress');
       return send(
         63,
         serializeMessageForTransport(new _root.GetAddress(
@@ -224,7 +226,23 @@ clearFields();
     }).then(function() {
       return receiveMessage();
     }).then(function(message) {
-      var address = _root.Address.decode(message);
+      // TODO: don't hard-code the 41 for PasshpraseRequest type
+      if(message.type == 41 ) {
+        console.log('Got PassphraseRequest msg!');
+        // TODO: prompt the user for a password :P
+        var passphrase = 'abcdefghijklmnop';
+        send(63,
+            serializeMessageForTransport(new _root.PassphraseAck(
+              passphrase), 42));
+        return send(
+          63,
+          serializeMessageForTransport(new _root.GetAddress(
+            [HARDEN | 44, HARDEN | 0, HARDEN | 0, 0, 0]), 29));
+        message = receiveMessage();
+        console.log('Message type: ', message.type);
+      }
+
+      var address = _root.Address.decode(message.data);
       document.querySelector("#address").value = address.address;
       return send(
         63,
@@ -233,7 +251,7 @@ clearFields();
     }).then(function() {
       return receiveMessage();
     }).then(function(message) {
-      var pubkey = _root.PublicKey.decode(message);
+      var pubkey = _root.PublicKey.decode(message.data);
       var xpub = processPubkey(pubkey);
       document.querySelector("#xpub").value = xpub;
       return disconnect();
@@ -247,6 +265,5 @@ window.onload = function() {
   document.querySelector("#query-button").addEventListener(
     "click",
     queryFirstConnectedDevice);
-
   queryFirstConnectedDevice();
 };
