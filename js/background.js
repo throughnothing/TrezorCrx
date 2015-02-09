@@ -8,7 +8,7 @@ chrome.app.runtime.onLaunched.addListener(function() {
   chrome.app.window.create(
     "build/html/index.html",
     {
-      id: "tpoc-window",
+      id: "trezor-crx-window",
       outerBounds: { minWidth: 800, minHeight: 480 }
     }
   );
