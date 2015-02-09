@@ -1,4 +1,7 @@
-var w = new Wallet();
+'use strict';
+var wallet = require('./wallet.js');
+
+var w = new wallet();
 
 function clearFields() {
   document.querySelector("#device_label").innerHTML = "[Device disconnected]";

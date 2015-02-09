@@ -1,20 +1,20 @@
 {
 
-  "name": "PRODUCTNAME",
-  "description": "Proof-of-concept Chrome App for Trezor (not affiliated with manufacturer of Trezor)",
-  "version": "MAJOR.MINOR.BUILD.PATCH",
+  "name": "TrezorHID",
+  "description": "Chrome App to use Trezor Hardware Wallet",
+  "version": "0.0.1",
 
   "manifest_version": 2,
   "minimum_chrome_version": "38.0.2125.7",
 
   "icons": {
-    "16": "assets/icon_16.png",
-    "128": "assets/icon_128.png"
+    "16": "build/assets/icon_16.png",
+    "128": "build/assets/icon_128.png"
   },
 
   "app": {
     "background": {
-      "scripts": ["background.js"]
+      "scripts": ["js/background.js"]
     }
   },
 

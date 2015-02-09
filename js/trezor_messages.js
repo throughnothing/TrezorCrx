@@ -1,4 +1,7 @@
-var TrezorMessages = dcodeIO.ProtoBuf.newBuilder().import({
+'use strict';
+var ProtoBuf = require('protobufjs');
+
+var TrezorMessages = ProtoBuf.newBuilder().import({
     "package": null,
     "messages": [
         {
@@ -1920,3 +1923,5 @@ var TrezorMessages = dcodeIO.ProtoBuf.newBuilder().import({
     },
     "services": []
 }).build();
+
+module.exports = TrezorMessages;

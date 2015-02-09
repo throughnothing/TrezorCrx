@@ -1,5 +1,9 @@
+'use strict';
+var tzDev = require('./trezor_device.js'),
+    tzMsgs = require('./trezor_messages.js');
+
 var Wallet = function() {
-  this.trezor = new TrezorDevice();
+  this.trezor = new tzDev();
   this.pubkey = null;
   this.hdnode = null;
   this.lastUsedDerivation = -1;
@@ -17,7 +21,7 @@ Wallet.prototype.init = function() {
           self.hdnode = bitcoin.HDNode.fromBase58(self.pubkey.xpub);
           return resolve(message);
       };
-      if(message.type == TrezorMessages.MessageType.MessageType_PassphraseRequest) {
+      if(message.type == tzMsgs.MessageType.MessageType_PassphraseRequest) {
         // TODO: Ask the user for the real passwordlol
         return td.send('PassphraseAck', 'abcdefg').then(function(message) {
             return getAddress(message);
@@ -43,3 +47,5 @@ Wallet.prototype.close = function() { self.trezor.disconnect(); }
 Wallet.prototype.getLabel = function() { return this.trezor.features.label; }
 Wallet.prototype.getDeviceId = function() { return this.trezor.features.device_id; }
 Wallet.prototype.getXpub = function() { return this.hdnode.toBase58(); }
+
+module.exports = Wallet;

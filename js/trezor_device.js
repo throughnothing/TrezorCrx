@@ -1,3 +1,9 @@
+'use strict';
+var tzMsg = require('./trezor_message.js'),
+    tzMsgs = require('./trezor_messages.js'),
+    ProtoBuf = require('protobufjs'),
+    ByteBuffer = ProtoBuf.ByteBuffer;
+
 var TrezorDevice = function() {
     this.vendorId = 0x534c;
     this.productId = 0x0001;
@@ -37,7 +43,7 @@ TrezorDevice.prototype.connect = function() {
   }).then(function() {
       return self.send('Initialize');
   }).then(function(message) {
-    self.features = TrezorMessages.Features.decode(message.data);
+    self.features = tzMsgs.Features.decode(message.data);
     return self;
   });
 }
@@ -129,7 +135,7 @@ TrezorDevice.prototype._receiveMoreOfMessageBody = function(messageBuffer, messa
 }
 
 TrezorDevice.prototype.parseHeadersAndCreateByteBuffer = function(first_msg) {
-  var msg = dcodeIO.ByteBuffer.concat([first_msg]);
+  var msg = ByteBuffer.concat([first_msg]);
   var original_length = msg.limit;
 
   var sharp1 = msg.readByte();
@@ -140,7 +146,7 @@ TrezorDevice.prototype.parseHeadersAndCreateByteBuffer = function(first_msg) {
   }
   var messageType = msg.readUint16();
   var messageLength = msg.readUint32();
-  var messageBuffer = new dcodeIO.ByteBuffer(messageLength);
+  var messageBuffer = new ByteBuffer(messageLength);
   messageBuffer.append(msg);
 
   return [messageType, messageLength, messageBuffer];
@@ -157,7 +163,7 @@ TrezorDevice.prototype.receive = function() {
         self._receiveMoreOfMessageBody(headers[2], headers[1])
           .then(function(byteBuffer) {
             byteBuffer.reset();
-            resolve(new TrezorMessage(headers[0], byteBuffer.toArrayBuffer()));
+            resolve(new tzMsg(headers[0], byteBuffer.toArrayBuffer()));
           });
       }
     });
@@ -165,13 +171,13 @@ TrezorDevice.prototype.receive = function() {
 }
 
 TrezorDevice.prototype.send = function(msg_name, data) {
-  var msg = new TrezorMessages[msg_name](data);
-  var msg_type = TrezorMessages.MessageType['MessageType_' + msg_name];
+  var msg = new tzMsgs[msg_name](data);
+  var msg_type = tzMsgs.MessageType['MessageType_' + msg_name];
 
   var msg_ab = new Uint8Array(msg.encodeAB());
   var header_size = 1 + 1 + 4 + 2;
   var full_size = header_size + msg_ab.length;
-  var msg_full = new dcodeIO.ByteBuffer(header_size + full_size);
+  var msg_full = new ByteBuffer(header_size + full_size);
   msg_full.writeByte(0x23);
   msg_full.writeByte(0x23);
   msg_full.writeUint16(msg_type);
@@ -192,3 +198,5 @@ TrezorDevice.prototype.send = function(msg_name, data) {
   });
 
 }
+
+module.exports = TrezorDevice;
