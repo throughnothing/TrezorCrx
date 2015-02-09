@@ -3,6 +3,12 @@
 Chrome App to interface with Trezor Hardware wallet.  My goal is to make
 this usable on a chromebook.
 
+## Status
+
+TrezorCrx currently isn't very usable.  It can connect to the trezor and
+display your addresses (at `m/44'/0'/0'/0/x`, just like mytrezor.com).
+Passphrase support is in progress.
+
 ## Development requirements
 
   * Chrome 38 or later. If you're on dev channel you should be fine.
