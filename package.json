@@ -6,6 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "bitcoin",
+    "trezor",
+    "chrome"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/throughnothing/TrezorCRX"
