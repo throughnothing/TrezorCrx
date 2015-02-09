@@ -1,12 +1,14 @@
 'use strict';
-var tzMsg = require('./trezor_message.js'),
-    tzMsgs = require('./trezor_messages.js'),
+var Messages = require('./messages.js'),
     ProtoBuf = require('protobufjs'),
     ByteBuffer = ProtoBuf.ByteBuffer;
 
+
+// Trezor Values
+var vendorId = 0x534c;
+var productId = 0x0001;
+
 var TrezorDevice = function() {
-    this.vendorId = 0x534c;
-    this.productId = 0x0001;
     this.HARDEN = 0x80000000;
 
     this.connectionId = null;
@@ -43,7 +45,7 @@ TrezorDevice.prototype.connect = function() {
   }).then(function() {
       return self.send('Initialize');
   }).then(function(message) {
-    self.features = tzMsgs.Features.decode(message.data);
+    self.features = Messages.Features.decode(message.data);
     return self;
   });
 }
@@ -71,7 +73,7 @@ TrezorDevice.prototype.getDevice = function() {
   var self = this;
   return new Promise(function(resolve, reject) {
     chrome.hid.getDevices(
-      {vendorId: self.vendorId, productId: self.productId },
+      {vendorId: vendorId, productId: productId },
       function(devices) {
         if (!devices || devices.length == 0) {
           reject("No device found.");
@@ -163,7 +165,7 @@ TrezorDevice.prototype.receive = function() {
         self._receiveMoreOfMessageBody(headers[2], headers[1])
           .then(function(byteBuffer) {
             byteBuffer.reset();
-            resolve(new tzMsg(headers[0], byteBuffer.toArrayBuffer()));
+            resolve(new Messages(headers[0], byteBuffer.toArrayBuffer()));
           });
       }
     });
@@ -171,8 +173,8 @@ TrezorDevice.prototype.receive = function() {
 }
 
 TrezorDevice.prototype.send = function(msg_name, data) {
-  var msg = new tzMsgs[msg_name](data);
-  var msg_type = tzMsgs.MessageType['MessageType_' + msg_name];
+  var msg = new Messages[msg_name](data);
+  var msg_type = Messages.MessageType['MessageType_' + msg_name];
 
   var msg_ab = new Uint8Array(msg.encodeAB());
   var header_size = 1 + 1 + 4 + 2;

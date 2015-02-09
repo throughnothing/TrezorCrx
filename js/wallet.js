@@ -1,10 +1,11 @@
 'use strict';
-var tzDev = require('./trezor_device.js'),
-    tzMsgs = require('./trezor_messages.js'),
-    bitcoin = require('bitcoinjs-lib');
+var TrezorDevice = require('./trezor/device.js'),
+    TrezorMsgs   = require('./trezor/messages.js'),
+    bitcoin      = require('bitcoinjs-lib');
+
 
 var Wallet = function() {
-  this.trezor = new tzDev();
+  this.trezor = new TrezorDevice();
   this.pubkey = null;
   this.hdnode = null;
   this.lastUsedDerivation = -1;
@@ -22,7 +23,7 @@ Wallet.prototype.init = function() {
           self.hdnode = bitcoin.HDNode.fromBase58(self.pubkey.xpub);
           return resolve(message);
       };
-      if(message.type == tzMsgs.MessageType.MessageType_PassphraseRequest) {
+      if(message.type == TrezorMsgs.MessageType.MessageType_PassphraseRequest) {
         // TODO: Ask the user for the real passwordlol
         return td.send('PassphraseAck', 'abcdefg').then(function(message) {
             return getAddress(message);
