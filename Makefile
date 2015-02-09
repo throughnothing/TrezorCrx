@@ -36,7 +36,7 @@ all: $(ZIP)
 
 $(ZIP): force_look
 	mkdir -p $(ZIPBASE)
-	cp -R *.html *.js *.css *.json components assets $(ZIPBASE)
+	cp -R *.html *.js *.css *.json assets $(ZIPBASE)
 	vulcanize -o $(ZIPBASE)/window-build.html window.html --csp
 	sed -i'' -e "s/PRODUCTNAME/${PRODUCTNAME}/" $(ZIPBASE)/manifest.json
 	sed -i'' -e "s/MAJOR/${MAJOR}/" $(ZIPBASE)/manifest.json

@@ -1,7 +1,7 @@
 var w = new Wallet();
 
 function clearFields() {
-  document.querySelector("#label").innerHTML = "[Device disconnected]";
+  document.querySelector("#device_label").innerHTML = "[Device disconnected]";
   document.querySelector("#device_id").value = "";
   document.querySelector("#xpub").value = "";
 }
@@ -22,7 +22,7 @@ function nextAddress() {
 function queryFirstConnectedDevice() {
   clearFields();
   w.init().then(function() {
-      document.querySelector("#label").innerHTML = w.getLabel();
+      document.querySelector("#device_label").innerHTML = w.getLabel();
       document.querySelector("#device_id").value = w.getDeviceId();
       document.querySelector("#xpub").value = w.getXpub();
       nextAddress();

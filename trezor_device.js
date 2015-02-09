@@ -29,10 +29,11 @@ TrezorDevice.prototype.connect = function() {
           }
         });
       });
-  }).then(function() {
-      return self.sendFeatureReport(0x41, 0x01);
-  }).then(function() {
-      return self.sendFeatureReport(0x43, 0x03);
+  // TODO: not sure what these are for yet
+  //}).then(function() {
+      //return self.sendFeatureReport(0x41, 0x01);
+  //}).then(function() {
+      //return self.sendFeatureReport(0x43, 0x03);
   }).then(function() {
       return self.send('Initialize');
   }).then(function(message) {
