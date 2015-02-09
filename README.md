@@ -9,8 +9,7 @@ this usable on a chromebook.
   * Node.js's [npm](https://www.npmjs.org/). On my OSX machine I
     satisfied this requirement with `brew install node`.
   * Webpack + App dependencies:
-
-      `sudo npm -g install webpack && sudo npm install`
+    * `sudo npm -g install webpack && sudo npm install`
 
 ## Build
 
