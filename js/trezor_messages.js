@@ -1,3 +1,6 @@
+/* For Reference:
+ * https://github.com/trezor/trezor-common/blob/master/protob/messages.proto
+ */
 'use strict';
 var ProtoBuf = require('protobufjs');
 
