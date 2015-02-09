@@ -1,6 +1,7 @@
 'use strict';
 var tzDev = require('./trezor_device.js'),
-    tzMsgs = require('./trezor_messages.js');
+    tzMsgs = require('./trezor_messages.js'),
+    bitcoin = require('bitcoinjs-lib');
 
 var Wallet = function() {
   this.trezor = new tzDev();

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/throughnothing/TrezorCRX",
   "dependencies": {
+    "bitcoinjs-lib": "^1.4.3",
     "protobufjs": "^3.8.2"
   }
 }
