@@ -19,6 +19,9 @@
   },
 
   "permissions": [
+    "contextMenus",
+    "clipboardRead",
+    "background",
     "hid",
     {
       "usbDevices": [

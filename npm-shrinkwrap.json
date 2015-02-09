@@ -247,6 +247,11 @@
         }
       }
     },
+    "fs": {
+      "version": "0.0.2",
+      "from": "fs@*",
+      "resolved": "https://registry.npmjs.org/fs/-/fs-0.0.2.tgz"
+    },
     "protobufjs": {
       "version": "3.8.2",
       "from": "protobufjs@>=3.8.2 <4.0.0",

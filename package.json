@@ -4,7 +4,8 @@
   "description": "Trezor Hardware Wallet App for Chrome",
   "main": "js/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "keywords": [
     "bitcoin",
@@ -23,6 +24,7 @@
   "homepage": "https://github.com/throughnothing/TrezorCRX",
   "dependencies": {
     "bitcoinjs-lib": "^1.4.3",
+    "fs": "0.0.2",
     "protobufjs": "^3.8.2"
   },
   "devDependencies": {
