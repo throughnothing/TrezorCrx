@@ -1,0 +1,292 @@
+{
+  "name": "TrezorCrx",
+  "version": "0.0.1",
+  "dependencies": {
+    "bitcoinjs-lib": {
+      "version": "1.4.3",
+      "from": "bitcoinjs-lib@>=1.4.3 <2.0.0",
+      "resolved": "https://registry.npmjs.org/bitcoinjs-lib/-/bitcoinjs-lib-1.4.3.tgz",
+      "dependencies": {
+        "bigi": {
+          "version": "1.4.0",
+          "from": "bigi@>=1.4.0 <2.0.0",
+          "resolved": "https://registry.npmjs.org/bigi/-/bigi-1.4.0.tgz"
+        },
+        "bs58check": {
+          "version": "1.0.3",
+          "from": "bs58check@1.0.3",
+          "resolved": "https://registry.npmjs.org/bs58check/-/bs58check-1.0.3.tgz",
+          "dependencies": {
+            "bs58": {
+              "version": "2.0.1",
+              "from": "bs58@>=2.0.0 <3.0.0",
+              "resolved": "https://registry.npmjs.org/bs58/-/bs58-2.0.1.tgz"
+            }
+          }
+        },
+        "crypto-browserify": {
+          "version": "3.9.12",
+          "from": "crypto-browserify@>=3.9.0 <4.0.0",
+          "resolved": "https://registry.npmjs.org/crypto-browserify/-/crypto-browserify-3.9.12.tgz",
+          "dependencies": {
+            "browserify-aes": {
+              "version": "1.0.0",
+              "from": "browserify-aes@>=1.0.0 <2.0.0",
+              "resolved": "https://registry.npmjs.org/browserify-aes/-/browserify-aes-1.0.0.tgz"
+            },
+            "browserify-sign": {
+              "version": "2.8.0",
+              "from": "browserify-sign@2.8.0",
+              "resolved": "https://registry.npmjs.org/browserify-sign/-/browserify-sign-2.8.0.tgz",
+              "dependencies": {
+                "bn.js": {
+                  "version": "1.3.0",
+                  "from": "bn.js@>=1.0.0 <2.0.0",
+                  "resolved": "https://registry.npmjs.org/bn.js/-/bn.js-1.3.0.tgz"
+                },
+                "browserify-rsa": {
+                  "version": "1.1.1",
+                  "from": "browserify-rsa@>=1.1.0 <2.0.0",
+                  "resolved": "https://registry.npmjs.org/browserify-rsa/-/browserify-rsa-1.1.1.tgz"
+                },
+                "elliptic": {
+                  "version": "1.0.1",
+                  "from": "elliptic@>=1.0.0 <2.0.0",
+                  "resolved": "https://registry.npmjs.org/elliptic/-/elliptic-1.0.1.tgz",
+                  "dependencies": {
+                    "brorand": {
+                      "version": "1.0.5",
+                      "from": "brorand@>=1.0.1 <2.0.0",
+                      "resolved": "https://registry.npmjs.org/brorand/-/brorand-1.0.5.tgz"
+                    },
+                    "hash.js": {
+                      "version": "1.0.2",
+                      "from": "hash.js@>=1.0.0 <2.0.0",
+                      "resolved": "https://registry.npmjs.org/hash.js/-/hash.js-1.0.2.tgz"
+                    }
+                  }
+                },
+                "parse-asn1": {
+                  "version": "2.0.0",
+                  "from": "parse-asn1@>=2.0.0 <3.0.0",
+                  "resolved": "https://registry.npmjs.org/parse-asn1/-/parse-asn1-2.0.0.tgz",
+                  "dependencies": {
+                    "asn1.js": {
+                      "version": "1.0.3",
+                      "from": "asn1.js@>=1.0.0 <2.0.0",
+                      "resolved": "https://registry.npmjs.org/asn1.js/-/asn1.js-1.0.3.tgz",
+                      "dependencies": {
+                        "minimalistic-assert": {
+                          "version": "1.0.0",
+                          "from": "minimalistic-assert@>=1.0.0 <2.0.0",
+                          "resolved": "https://registry.npmjs.org/minimalistic-assert/-/minimalistic-assert-1.0.0.tgz"
+                        }
+                      }
+                    },
+                    "asn1.js-rfc3280": {
+                      "version": "1.0.0",
+                      "from": "asn1.js-rfc3280@>=1.0.0 <2.0.0",
+                      "resolved": "https://registry.npmjs.org/asn1.js-rfc3280/-/asn1.js-rfc3280-1.0.0.tgz"
+                    },
+                    "pemstrip": {
+                      "version": "0.0.1",
+                      "from": "pemstrip@0.0.1",
+                      "resolved": "https://registry.npmjs.org/pemstrip/-/pemstrip-0.0.1.tgz"
+                    }
+                  }
+                }
+              }
+            },
+            "create-ecdh": {
+              "version": "1.0.3",
+              "from": "create-ecdh@1.0.3",
+              "resolved": "https://registry.npmjs.org/create-ecdh/-/create-ecdh-1.0.3.tgz",
+              "dependencies": {
+                "bn.js": {
+                  "version": "1.3.0",
+                  "from": "bn.js@>=1.0.0 <2.0.0",
+                  "resolved": "https://registry.npmjs.org/bn.js/-/bn.js-1.3.0.tgz"
+                },
+                "elliptic": {
+                  "version": "1.0.1",
+                  "from": "elliptic@>=1.0.0 <2.0.0",
+                  "resolved": "https://registry.npmjs.org/elliptic/-/elliptic-1.0.1.tgz",
+                  "dependencies": {
+                    "brorand": {
+                      "version": "1.0.5",
+                      "from": "brorand@>=1.0.1 <2.0.0",
+                      "resolved": "https://registry.npmjs.org/brorand/-/brorand-1.0.5.tgz"
+                    },
+                    "hash.js": {
+                      "version": "1.0.2",
+                      "from": "hash.js@>=1.0.0 <2.0.0",
+                      "resolved": "https://registry.npmjs.org/hash.js/-/hash.js-1.0.2.tgz"
+                    }
+                  }
+                }
+              }
+            },
+            "create-hash": {
+              "version": "1.1.0",
+              "from": "create-hash@>=1.1.0 <2.0.0",
+              "resolved": "https://registry.npmjs.org/create-hash/-/create-hash-1.1.0.tgz",
+              "dependencies": {
+                "ripemd160": {
+                  "version": "1.0.0",
+                  "from": "ripemd160@>=1.0.0 <2.0.0",
+                  "resolved": "https://registry.npmjs.org/ripemd160/-/ripemd160-1.0.0.tgz"
+                },
+                "sha.js": {
+                  "version": "2.3.6",
+                  "from": "sha.js@>=2.3.6 <3.0.0",
+                  "resolved": "https://registry.npmjs.org/sha.js/-/sha.js-2.3.6.tgz"
+                }
+              }
+            },
+            "create-hmac": {
+              "version": "1.1.3",
+              "from": "create-hmac@>=1.1.0 <2.0.0",
+              "resolved": "https://registry.npmjs.org/create-hmac/-/create-hmac-1.1.3.tgz"
+            },
+            "diffie-hellman": {
+              "version": "3.0.1",
+              "from": "diffie-hellman@>=3.0.1 <4.0.0",
+              "resolved": "https://registry.npmjs.org/diffie-hellman/-/diffie-hellman-3.0.1.tgz",
+              "dependencies": {
+                "bn.js": {
+                  "version": "1.3.0",
+                  "from": "bn.js@>=1.0.0 <2.0.0",
+                  "resolved": "https://registry.npmjs.org/bn.js/-/bn.js-1.3.0.tgz"
+                },
+                "miller-rabin": {
+                  "version": "1.1.5",
+                  "from": "miller-rabin@>=1.1.2 <2.0.0",
+                  "resolved": "https://registry.npmjs.org/miller-rabin/-/miller-rabin-1.1.5.tgz",
+                  "dependencies": {
+                    "brorand": {
+                      "version": "1.0.5",
+                      "from": "brorand@>=1.0.1 <2.0.0",
+                      "resolved": "https://registry.npmjs.org/brorand/-/brorand-1.0.5.tgz"
+                    }
+                  }
+                }
+              }
+            },
+            "inherits": {
+              "version": "2.0.1",
+              "from": "inherits@>=2.0.1 <3.0.0",
+              "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz"
+            },
+            "pbkdf2-compat": {
+              "version": "3.0.1",
+              "from": "pbkdf2-compat@>=3.0.1 <4.0.0",
+              "resolved": "https://registry.npmjs.org/pbkdf2-compat/-/pbkdf2-compat-3.0.1.tgz"
+            },
+            "public-encrypt": {
+              "version": "1.1.2",
+              "from": "public-encrypt@1.1.2",
+              "resolved": "https://registry.npmjs.org/public-encrypt/-/public-encrypt-1.1.2.tgz",
+              "dependencies": {
+                "bn.js": {
+                  "version": "1.3.0",
+                  "from": "bn.js@>=1.0.0 <2.0.0",
+                  "resolved": "https://registry.npmjs.org/bn.js/-/bn.js-1.3.0.tgz"
+                },
+                "browserify-rsa": {
+                  "version": "1.1.1",
+                  "from": "browserify-rsa@>=1.1.0 <2.0.0",
+                  "resolved": "https://registry.npmjs.org/browserify-rsa/-/browserify-rsa-1.1.1.tgz"
+                },
+                "parse-asn1": {
+                  "version": "2.0.0",
+                  "from": "parse-asn1@>=2.0.0 <3.0.0",
+                  "resolved": "https://registry.npmjs.org/parse-asn1/-/parse-asn1-2.0.0.tgz",
+                  "dependencies": {
+                    "asn1.js": {
+                      "version": "1.0.3",
+                      "from": "asn1.js@>=1.0.0 <2.0.0",
+                      "resolved": "https://registry.npmjs.org/asn1.js/-/asn1.js-1.0.3.tgz",
+                      "dependencies": {
+                        "minimalistic-assert": {
+                          "version": "1.0.0",
+                          "from": "minimalistic-assert@>=1.0.0 <2.0.0",
+                          "resolved": "https://registry.npmjs.org/minimalistic-assert/-/minimalistic-assert-1.0.0.tgz"
+                        }
+                      }
+                    },
+                    "asn1.js-rfc3280": {
+                      "version": "1.0.0",
+                      "from": "asn1.js-rfc3280@>=1.0.0 <2.0.0",
+                      "resolved": "https://registry.npmjs.org/asn1.js-rfc3280/-/asn1.js-rfc3280-1.0.0.tgz"
+                    },
+                    "pemstrip": {
+                      "version": "0.0.1",
+                      "from": "pemstrip@0.0.1",
+                      "resolved": "https://registry.npmjs.org/pemstrip/-/pemstrip-0.0.1.tgz"
+                    }
+                  }
+                }
+              }
+            },
+            "randombytes": {
+              "version": "2.0.1",
+              "from": "randombytes@>=2.0.0 <3.0.0",
+              "resolved": "https://registry.npmjs.org/randombytes/-/randombytes-2.0.1.tgz"
+            }
+          }
+        },
+        "ecurve": {
+          "version": "1.0.0",
+          "from": "ecurve@1.0.0",
+          "resolved": "https://registry.npmjs.org/ecurve/-/ecurve-1.0.0.tgz"
+        },
+        "typeforce": {
+          "version": "0.1.0",
+          "from": "typeforce@0.1.0",
+          "resolved": "https://registry.npmjs.org/typeforce/-/typeforce-0.1.0.tgz"
+        }
+      }
+    },
+    "protobufjs": {
+      "version": "3.8.2",
+      "from": "protobufjs@>=3.8.2 <4.0.0",
+      "resolved": "https://registry.npmjs.org/protobufjs/-/protobufjs-3.8.2.tgz",
+      "dependencies": {
+        "bytebuffer": {
+          "version": "3.5.4",
+          "from": "bytebuffer@>=3.0.0 <4.0.0 >=3.5.0",
+          "resolved": "https://registry.npmjs.org/bytebuffer/-/bytebuffer-3.5.4.tgz",
+          "dependencies": {
+            "long": {
+              "version": "2.2.3",
+              "from": "long@>=2.0.0 <3.0.0 >=2.2.3",
+              "resolved": "https://registry.npmjs.org/long/-/long-2.2.3.tgz"
+            },
+            "bufferview": {
+              "version": "1.0.1",
+              "from": "bufferview@>=1.0.0 <2.0.0",
+              "resolved": "https://registry.npmjs.org/bufferview/-/bufferview-1.0.1.tgz"
+            }
+          }
+        },
+        "ascli": {
+          "version": "0.3.0",
+          "from": "ascli@>=0.3.0 <0.4.0",
+          "resolved": "https://registry.npmjs.org/ascli/-/ascli-0.3.0.tgz",
+          "dependencies": {
+            "colour": {
+              "version": "0.7.1",
+              "from": "colour@latest",
+              "resolved": "https://registry.npmjs.org/colour/-/colour-0.7.1.tgz"
+            },
+            "optjs": {
+              "version": "3.2.1-boom",
+              "from": "optjs@latest",
+              "resolved": "https://registry.npmjs.org/optjs/-/optjs-3.2.1-boom.tgz"
+            }
+          }
+        }
+      }
+    }
+  }
+}
