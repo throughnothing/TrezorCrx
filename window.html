@@ -22,10 +22,6 @@
           <label>Device ID</label>
           <input placeholder="Device ID" flex id="device_id">
         </core-field>
-        <core-field>
-          <label>Address</label>
-          <input placeholder="Address #1" flex id="address">
-        </core-field>
         <core-input class="sized" multiline placeholder="Address #1's xpub" id="xpub" flex>
         </core-input>
         <paper-button id="query-button">Query Device</paper-button>
@@ -37,9 +33,12 @@
     <script src="ProtoBuf.noparse.min.js"></script>
     <script src="buffer.min.js"></script>
     <script src="bitcoinjs.min.js"></script>
+
+    <!-- TODO: Browserify this stuff? -->
     <script src="trezor_messages.js"></script>
     <script src="trezor_message.js"></script>
     <script src="trezor_device.js"></script>
+    <script src="wallet.js"></script>
     <script src="window.js"></script>
   </body>
 </html>
