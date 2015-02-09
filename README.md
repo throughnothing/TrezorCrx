@@ -1,19 +1,24 @@
-trhid
-=====
+# TrezorCrx
 
-Proof-of-concept Chrome App for Trezor. Not affiliated with Trezor
-manufacturer.
+Chrome App to interface with Trezor Hardware wallet.  My goal is to make
+this usable on a chromebook.
 
-Development requirements
-===
+## Development requirements
 
   * Chrome 38 or later. If you're on dev channel you should be fine.
-  * Some sort of POSIXy system
   * Node.js's [npm](https://www.npmjs.org/). On my OSX machine I
     satisfied this requirement with `brew install node`.
-  * `sudo npm -g install webpack && sudo npm install`
+  * Webpack + App dependencies:
 
-Build with `webpack`. 
-To test the app, go to "Load unpacked
-extension..." in chrome://extensions and then pick the root directory
-(with the manifest.json).
+      `sudo npm -g install webpack && sudo npm install`
+
+## Build
+
+To build run `webpack`.
+
+## Running in Chrome
+
+To run the app, go to "Load unpacked extension..." in chrome://extensions
+and then pick the root directory of this repo.  The `manifest.json`, along
+with the `background.js` file that it points to will tell chrome how to
+run everything.
