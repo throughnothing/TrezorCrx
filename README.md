@@ -49,5 +49,7 @@ you will need to run webpack before re-launching the app from Chrome.
     * (or do SPV node like: https://github.com/ryanxcharles/fullnode?!)
   * Make it look pretty (:-O)
   * Will we need to use localstorage for anything?
-  * Make Chrome 39+ required to get HID onDevice* notification events?
+  * Make Chrome 39+ required to get HID onDevice\* notification events?
     * https://developer.chrome.com/apps/hid
+  * Ability to detect bitcoin addresses and Autotip metatags on web pages and
+    Prompt for trezor/payment if desired?
