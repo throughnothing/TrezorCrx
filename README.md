@@ -15,8 +15,8 @@ To run the app, you *do not* need to install the developer requirements
 listed below if you don't want to modify the code.
 
 Simply enable "Developer mode" checkbox in the upper-right-hand corner of
-[chrome://extensions](chrom://extensions) and then click
-"Load unpacked extension..." and pick the root directory of this repo.
+`chrome://extensions` and then click "Load unpacked extension..." and pick
+the root directory of this repo.
 
 The `manifest.json`, along with the `background.js` file that it points to
 will tell chrome how to run everything.
