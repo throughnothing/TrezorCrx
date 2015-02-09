@@ -34,8 +34,10 @@ proceed with the development requirements below.
 
 ## Build
 
-To build run `webpack`.  Whenever you make changes to the javascript in `js/`
-you will need to run webpack before re-launching the app from Chrome.
+To build run: `npm run build`
+
+Whenever you make changes to the javascript in `js/` you will need to run
+this again before re-launching the app from Chrome.
 
 ## TODO
 
