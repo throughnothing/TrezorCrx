@@ -27,3 +27,13 @@ To run the app, go to "Load unpacked extension..." in chrome://extensions
 and then pick the root directory of this repo.  The `manifest.json`, along
 with the `background.js` file that it points to will tell chrome how to
 run everything.
+
+## TODO
+
+  * ReactJS
+  * react-router-component (https://github.com/STRML/react-router-component)
+  * Use cx() for css ClassName manipulation
+  * decide API to use for address checking (Chain, blockchain.info, Coinbase)
+    * (or do SPV node like: https://github.com/ryanxcharles/fullnode?!)
+  * Make it look pretty (:-O)
+  * Will we need to use localstorage for anything?
