@@ -1,6 +1,6 @@
 {
 
-  "name": "TrezorHID",
+  "name": "TrezorCrx",
   "description": "Chrome App to use Trezor Hardware Wallet",
   "version": "0.0.1",
 
