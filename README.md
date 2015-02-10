@@ -5,9 +5,9 @@ this usable on a chromebook.
 
 ## Status
 
-TrezorCrx currently isn't very usable.  It can connect to the trezor and
-display your addresses (at `m/44'/0'/0'/0/x`, just like mytrezor.com).
-Passphrase support is in progress.
+TrezorCrx currently isn't very usable and is **alpha quality software**.
+Please don't do anything with real bitcoins or real wallets with it, yet.
+Use at your own risk!
 
 ## Running in Chrome
 
