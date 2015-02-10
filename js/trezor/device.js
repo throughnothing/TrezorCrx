@@ -1,5 +1,6 @@
 'use strict';
 var Messages = require('./messages.js'),
+    Message  = require('./message.js'),
     ProtoBuf = require('protobufjs'),
     ByteBuffer = ProtoBuf.ByteBuffer;
 
@@ -15,7 +16,6 @@ var TrezorDevice = function() {
     this.deviceId = null;
     this.features = null;
     this.reportId = 63; // TODO: where did this number come from?!
-    this.features = null;
 };
 
 TrezorDevice.prototype._padByteArray = function(sequence, size) {
@@ -45,7 +45,7 @@ TrezorDevice.prototype.connect = function() {
   }).then(function() {
       return self.send('Initialize');
   }).then(function(message) {
-    self.features = Messages.Features.decode(message.data);
+    self.features = message.decode();
     return self;
   });
 }
@@ -165,7 +165,7 @@ TrezorDevice.prototype.receive = function() {
         self._receiveMoreOfMessageBody(headers[2], headers[1])
           .then(function(byteBuffer) {
             byteBuffer.reset();
-            resolve(new Messages(headers[0], byteBuffer.toArrayBuffer()));
+            resolve(new Message(headers[0], byteBuffer.toArrayBuffer()));
           });
       }
     });
@@ -173,7 +173,12 @@ TrezorDevice.prototype.receive = function() {
 }
 
 TrezorDevice.prototype.send = function(msg_name, data) {
-  var msg = new Messages[msg_name](data);
+  var msg;
+  if(data) {
+      msg = new Messages[msg_name](data);
+  } else {
+      msg = new Messages[msg_name]();
+  }
   var msg_type = Messages.MessageType['MessageType_' + msg_name];
 
   var msg_ab = new Uint8Array(msg.encodeAB());

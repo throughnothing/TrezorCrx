@@ -1,5 +1,5 @@
 'use strict';
-var tzMsgs = require('./trezor_messages.js');
+var Messages = require('./messages.js');
 
 var TrezorMessage = function(type, arrayBuffer) {
   this.type = type;
@@ -9,8 +9,8 @@ var TrezorMessage = function(type, arrayBuffer) {
 TrezorMessage.prototype.getMethod = function() {
   // TODO: This is kinda crappy
   var found;
-  for(var method in tzMsgs.MessageType) {
-    var value = tzMsgs.MessageType[method];
+  for(var method in Messages.MessageType) {
+    var value = Messages.MessageType[method];
     if(value == this.type) {
       found = method.split('_')[1];
     }
@@ -23,7 +23,7 @@ TrezorMessage.prototype.decode = function() {
   if(!method) {
       return null;
   }
-  return tzMsgs[method].decode(this.data);
+  return Messages[method].decode(this.data);
 }
 
 module.exports = TrezorMessage;
