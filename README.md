@@ -38,21 +38,3 @@ To build run: `npm run build`
 
 Whenever you make changes to the javascript in `js/` you will need to run
 this again before re-launching the app from Chrome.
-
-## TODO
-
-  * ~~Move to webpack~~
-  * ~~Get rid of old Makefile/buIld stuff~~
-  * ~~Restructure directories~~
-  * ReactJS
-  * react-router-component (https://github.com/STRML/react-router-component)
-  * Use cx() for css ClassName manipulation
-  * decide API to use for address checking (Chain, blockchain.info, Coinbase)
-    * (or do SPV node like: https://github.com/ryanxcharles/fullnode?!)
-  * Make it look pretty (:-O)
-  * Make a logo?!
-  * Will we need to use localstorage for anything?
-  * Make Chrome 39+ required to get HID onDevice\* notification events?
-    * https://developer.chrome.com/apps/hid
-  * Ability to detect bitcoin addresses and Autotip metatags on web pages and
-    Prompt for trezor/payment if desired?
