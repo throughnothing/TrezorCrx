@@ -2,10 +2,13 @@
 var webpack = require('webpack');
 
 module.exports = {
-    entry: './js/app',
+    entry: {
+        app : './js/app',
+        background: './js/background'
+    },
     output: {
         path: __dirname + '/build/js',
-        filename: 'app.js'
+        filename: '[name].js'
     },
     resolve: {
         extensions: ['', '.js', '.jsx', '.json']

@@ -23805,8 +23805,6 @@
 	    ByteBuffer = ProtoBuf.ByteBuffer;
 
 
-	console.log(Messages);
-
 	// Trezor Values
 	var vendorId = 0x534c;
 	var productId = 0x0001;
@@ -23845,13 +23843,9 @@
 	  //}).then(function() {
 	      //return self.sendFeatureReport(0x43, 0x03);
 	  }).then(function() {
-	      console.log('init');
 	      return self.send('Initialize');
-	      console.log('post-init');
 	  }).then(function(message) {
-	      console.log(message);
 	    self.features = message.decode();
-	    console.log(self.features);
 	    return self;
 	  });
 	}
