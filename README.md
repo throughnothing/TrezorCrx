@@ -1,5 +1,10 @@
 # TrezorCrx
 
+**UPDATE**: This repo is now unmaintained.  I've moved the main parts
+to my [chrome-trezor](https://github.com/throughnothing/chrome-trezor)
+repo in a more modularized fashion that can be used in chrome apps.
+Please use that repository instead, as this one won't be maintained.
+
 Chrome App to interface with Trezor Hardware wallet.  My goal is to make
 this usable on a chromebook.
 
